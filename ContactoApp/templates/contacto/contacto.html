@@ -1,0 +1,30 @@
+{% extends "proyectofinalapp/ppal_tplate.html" %}
+{% load static %}
+
+<head>
+    {% block title %}
+    Proyecto Final - Contacto
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <div>
+        <h1>CONTACTO</h1>
+        <h2>Pagina de Formulario de contacto</h2>
+        {% if 'valido' in request.GET %}
+        <p style="background-color: green;">Gracias por su comentario!</p>
+        {% elif 'invalido' in request.GET %}
+        <p style="background-color: red;">Error en el envio de su mensaje!</p>
+        {% endif %}
+        
+        <form action="" method="POST"> 
+            {% csrf_token %}
+            <table>
+                {{ elformulario.as_table }}
+                
+            </table>
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+    {% endblock %}
+</body>

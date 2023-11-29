@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <link href="{% static 'proyectofinalapp/css/styleindex.css' %}" rel="stylesheet">
+    {% block style %}{% endblock %}
+
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <!-- {{navbar}} -->
+    <header>
+        <div id='navbar'>
+            <ul id='ulbar'>
+
+                <a href="{% url 'Home' %}" class='abar'>
+                    <i class="fa-solid fa-house" class='iconbar'></i>
+                    <li class='libar' {% if request.path != '/' %}:active{% endif %}>Home</li></a>
+                <a href="{% url 'Servicios' %}" class='abar'>
+                    <i class="fa-solid fa-cake-candles" class='iconbar'></i>
+                    <li class='libar' {% if request.path != '/servicios' %}:active{% endif %}>Servicios</li></a>
+                <a href="{% url 'Tienda' %}" class='abar'>
+                    <i class="fa-solid fa-cart-shopping" class='iconbar'></i>
+                    <li class='libar' {% if request.path != '/tienda' %}:active{% endif %}>Tienda</li></a>
+                <a href="{% url 'Blog' %}" class='abar'>
+                    <i class="fa-brands fa-microblog" class='iconbar'></i>
+                    <li class='libar' {% if request.path != '/blog' %}:active{% endif %}>Blog</li></a>
+                <a href="{% url 'Contacto' %}" class='abar'>
+                    <i class="fa-solid fa-envelope" class='iconbar'></i>
+                    <li class='libar' {% if request.path != '/contacto' %}:active{% endif %}>Contacto</li></a>
+            </ul>
+        </div>
+    </header>
+    
+
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- FOOTER -->
+    
+</body>
+</html>

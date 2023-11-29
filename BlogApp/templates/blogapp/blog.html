@@ -1,0 +1,51 @@
+{% extends "proyectofinalapp/ppal_tplate.html" %}
+{% load static %}
+
+<head>
+    {% block style %}
+    <link href="{% static 'proyectofinalapp/css/styleblog.css' %}" rel="stylesheet">
+    {% endblock %}
+    {% block title %}
+    Proyecto Final - Blog
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <div class='seccBlog'>
+        <h1>BLOG</h1>
+        <h2>Pagina de Blogs</h2>
+        <div class='catBox'>
+            <p>categorias: 
+                {% for post in posts %}
+                    {% for categoria in post.categorias.all %}
+                        <a href={% url 'Categoria' post.id %}>{{ categoria.nombre }}</a> /
+                    {% endfor %}
+
+                {% endfor %}
+            </p>
+        </div>
+        <section class='conteinerBlog'>
+            {% for post in posts %}
+                <div class='blogCard'>
+                    <div class='imageCard'>
+                        <img src="{{post.imagen.url}}">    
+                    </div>
+                    
+                    <div class ='infoCard'>
+                        <h2>{{post.titulo}}</h2>
+                        <h5>{{post.detalle}}</h5>
+                    </div>
+
+                    <div class ='createCard'>
+                        <p>Autor: {{post.autor}}</p>
+                        <p>Creado: {{post.created}}</p>
+                        <p>Actualizado: {{post.updated}}</p>
+                    </div>
+                    
+                </div>
+            {% endfor %}
+
+        </section>
+    </div>
+    {% endblock %}
+</body>

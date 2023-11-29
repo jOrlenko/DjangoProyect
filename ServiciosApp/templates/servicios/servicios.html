@@ -1,0 +1,35 @@
+{% extends "proyectofinalapp/ppal_tplate.html" %}
+{% load static %}
+
+<head>
+    {% block style %}
+    <link href="{% static 'proyectofinalapp/css/styleservicios.css' %}" rel="stylesheet">
+    {% endblock %}
+    
+    {% block title %}
+    Proyecto Final - Servicios
+    {% endblock %}
+    
+</head>
+<body>
+    {% block content %}
+    <div class='seccServicios'>
+        <h1>SERVICIOS</h1>
+        <h2>Pagina de Servicios</h2>
+        <section class='conteinerServs'>
+            {% for servicio in servicios %}
+                <div class='servCard'>
+                    <img src="{{servicio.imagen.url}}">
+                    <section class = infoCard>
+                        <h2>{{servicio.titulo}}</h2>
+                        <h5>{{servicio.detalle}}</h5>
+                        <p>Creado: {{servicio.created}}</p>
+                        <p>Actualizado: {{servicio.updated}}</p>
+                    </section>
+                </div>
+            {% endfor %}
+        </section>
+    </div>
+    {% endblock %}
+    
+</body>
